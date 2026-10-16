@@ -1,6 +1,8 @@
 #ifndef USUARIO_H
 #define USUARIO_H
 
+#include "Album.h"
+
 class Usuario
 {
 private:
@@ -12,6 +14,8 @@ private:
     char* ciudad;
     char* pais;
     char* fechaInscripcion;
+    Album* albumes;
+    int numAlbumes;
 
     void copiarDe(const Usuario& otro);
     void liberar();
@@ -27,6 +31,11 @@ public:
     const char* getCorreo() const { return correo ? correo : ""; }
     const char* getRutaFoto() const { return rutaFoto ? rutaFoto : ""; }
     bool claveCorrecta(const char* intento) const;
+
+    void agregarAlbum(const Album& a);
+    int getNumAlbumes() const { return numAlbumes; }
+    Album& getAlbum(int i) { return albumes[i]; }
+    const Album& getAlbum(int i) const { return albumes[i]; }
 
     bool operator==(const Usuario& otro) const;
 };

@@ -19,7 +19,8 @@ Album& Album::operator=(const Album& otro) {
 
 Album::~Album() { liberar(); }
 
-void Album::copiarDe(const Album& otro) {
+void Album::copiarDe(const Album& otro)
+{
     nombre = Util::copiar(otro.nombre);
     ruta = Util::copiar(otro.ruta);
     privacidad = otro.privacidad;
@@ -27,7 +28,8 @@ void Album::copiarDe(const Album& otro) {
     fotos = copiarArreglo(otro.fotos, otro.numFotos);
 }
 
-void Album::liberar() {
+void Album::liberar()
+{
     delete[] nombre;
     delete[] ruta;
     delete[] fotos;

@@ -3,6 +3,9 @@
 
 namespace Util
 {
+int   aEntero(const char* s);
+unsigned long aEnteroLargo(const char* s);
+int   partir(char* linea, char sep, char** campos, int maxCampos);
 int   longitud(const char* s);
 char* copiar(const char* s);
 bool  iguales(const char* a, const char* b);
@@ -32,7 +35,8 @@ void eliminarEn(T*& arreglo, int& cantidad, int pos)
 }
 
 template <typename T>
-T* copiarArreglo(const T* origen, int cantidad) {
+T* copiarArreglo(const T* origen, int cantidad)
+{
     if (cantidad <= 0) return nullptr;
     T* nuevo = new T[cantidad];
     for (int i = 0; i < cantidad; i++) nuevo[i] = origen[i];
