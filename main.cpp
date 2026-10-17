@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include "SistemaRed.h"
-#include "Metricas.h"
+#include "Util.h"
 
 using namespace std;
 
@@ -40,21 +40,16 @@ int main(int argc, char** argv)
         return 1;
     }
 
+    Util::iniciarAleatorio();
     SistemaRed red;
     if (!red.cargarDatos(carpeta)) {
         cout << "No se pudieron cargar los datos.\n";
         return 1;
     }
-    cout << "Iteraciones al cargar: " << Metricas::iteraciones() << "\n";
 
-    Metricas::reiniciar();
-    int u = red.iniciarSesion("usuario0001", "clave0001");
-    cout << "login correcto: " << (u >= 0) << " (indice " << u << ")  iteraciones: "<< Metricas::iteraciones() << "\n";
-    cout << "login con clave mala: " << red.iniciarSesion("usuario0001", "mala") << "\n";
+    red.ejecutar();
 
-    Metricas::reiniciar();
-    cout << "amigos de usuario0001: " << red.contarAmigos(u) << "\n";
-    cout << "amigos en comun (0,1): " << red.amigosEnComun(0, 1) << "  son amigos: " << red.sonAmigos(0, 1) << "\n";
-    cout << "iteraciones: " << Metricas::iteraciones() << "\n";
+    if (!red.guardarDatos(carpeta))
+        cout << "Advertencia: no se pudieron guardar los datos.\n";
     return 0;
 }

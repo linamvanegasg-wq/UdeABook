@@ -3,21 +3,27 @@
 
 Album::Album() : nombre(nullptr), ruta(nullptr), privacidad(PUBLICO), fotos(nullptr), numFotos(0) {}
 
-Album::Album(const char* nombreAlbum, const char* rutaAlbum, int priv)
-    : nombre(Util::copiar(nombreAlbum)), ruta(Util::copiar(rutaAlbum)), privacidad(priv),
-    fotos(nullptr), numFotos(0) {}
+Album::Album(const char* nombreAlbum, const char* rutaAlbum, int priv): nombre(Util::copiar(nombreAlbum)), ruta(Util::copiar(rutaAlbum)), privacidad(priv),fotos(nullptr), numFotos(0) {}
 
-Album::Album(const Album& otro) { copiarDe(otro); }
+Album::Album(const Album& otro)
+{
+    copiarDe(otro);
+}
 
-Album& Album::operator=(const Album& otro) {
-    if (this != &otro) {
+Album& Album::operator=(const Album& otro)
+{
+    if (this != &otro)
+    {
         liberar();
         copiarDe(otro);
     }
     return *this;
 }
 
-Album::~Album() { liberar(); }
+Album::~Album()
+{
+    liberar();
+}
 
 void Album::copiarDe(const Album& otro)
 {
@@ -39,4 +45,7 @@ void Album::liberar()
     numFotos = 0;
 }
 
-void Album::agregarFoto(const Foto& f) { agregarAlFinal(fotos, numFotos, f); }
+void Album::agregarFoto(const Foto& f)
+{
+    agregarAlFinal(fotos, numFotos, f);
+}

@@ -22,7 +22,7 @@ private:
 
 public:
     Usuario();
-    Usuario(const char* nombre, const char* nacimiento, const char* correo,const char* foto, const char* clave, const char* ciudad,const char* pais, const char* inscripcion);
+    Usuario(const char* nombre, const char* nacimiento, const char* correo,const char* foto, const char* clave, const char* ciudad, const char* pais, const char* inscripcion);
     Usuario(const Usuario& otro);
     Usuario& operator=(const Usuario& otro);
     ~Usuario();
@@ -38,6 +38,8 @@ public:
     const Album& getAlbum(int i) const { return albumes[i]; }
 
     bool operator==(const Usuario& otro) const;
+
+    long long memoriaDinamica() const;
 };
 
 #endif

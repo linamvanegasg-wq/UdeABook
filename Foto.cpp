@@ -3,9 +3,7 @@
 
 Foto::Foto() : fechaCaptura(nullptr), tamano(0), ruta(nullptr), likes(0) {}
 
-Foto::Foto(const char* fecha, unsigned long tam, const char* rutaArchivo, unsigned int likesIniciales)
-    : fechaCaptura(Util::copiar(fecha)), tamano(tam), ruta(Util::copiar(rutaArchivo)),
-    likes(likesIniciales) {}
+Foto::Foto(const char* fecha, unsigned long tam, const char* rutaArchivo, unsigned int likesIniciales): fechaCaptura(Util::copiar(fecha)), tamano(tam), ruta(Util::copiar(rutaArchivo)),likes(likesIniciales) {}
 
 Foto::Foto(const Foto& otra)
 {
@@ -55,7 +53,6 @@ bool Foto::operator==(const Foto& otra) const
 
 std::ostream& operator<<(std::ostream& os, const Foto& f)
 {
-    os << f.getRuta() << " | capturada: " << f.getFechaCaptura()
-    << " | " << f.tamano << " bytes | likes: " << f.likes;
+    os << f.getRuta() << " | capturada: " << f.getFechaCaptura()<< " | " << f.tamano << " bytes | likes: " << f.likes;
     return os;
 }

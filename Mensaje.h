@@ -30,7 +30,7 @@ public:
     const char* getFechaEnvio() const { return fechaEnvio ? fechaEnvio : ""; }
     bool estaLeido() const { return leido; }
 
-    bool operator<(const Mensaje& otro) const;   // compara por fecha
+    bool operator<(const Mensaje& otro) const;
 
     friend std::ostream& operator<<(std::ostream& os, const Mensaje& m);
 };

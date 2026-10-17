@@ -3,13 +3,19 @@
 
 namespace Util
 {
-int   aEntero(const char* s);
-unsigned long aEnteroLargo(const char* s);
-int   partir(char* linea, char sep, char** campos, int maxCampos);
-int   longitud(const char* s);
-char* copiar(const char* s);
-bool  iguales(const char* a, const char* b);
+    int   longitud(const char* s);
+    char* copiar(const char* s);
+    bool  iguales(const char* a, const char* b);
+    int   aEntero(const char* s);
+    unsigned long aEnteroLargo(const char* s);
+    int   partir(char* linea, char sep, char** campos, int maxCampos);
+    int   comparar(const char* a, const char* b, int n = -1);
+    bool  fechaValida(const char* f);
+    void  fechaActual(char* destino);
+    void  iniciarAleatorio();
+    double aleatorioReal();
 }
+
 
 template <typename T>
 void agregarAlFinal(T*& arreglo, int& cantidad, const T& valor)
@@ -32,6 +38,19 @@ void eliminarEn(T*& arreglo, int& cantidad, int pos)
     delete[] arreglo;
     arreglo = nuevo;
     cantidad--;
+}
+
+template <typename T>
+void insertarEn(T*& arreglo, int& cantidad, int pos, const T& valor)
+{
+    if (pos < 0 || pos > cantidad) return;
+    T* nuevo = new T[cantidad + 1];
+    for (int i = 0; i < pos; i++) nuevo[i] = arreglo[i];
+    nuevo[pos] = valor;
+    for (int i = pos; i < cantidad; i++) nuevo[i + 1] = arreglo[i];
+    delete[] arreglo;
+    arreglo = nuevo;
+    cantidad++;
 }
 
 template <typename T>
